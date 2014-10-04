@@ -1,0 +1,9 @@
+Creates a <i>mutable</i>, empty {@code HashMap} instance.
+
+<p><b>Note:</b> if mutability is not required, use {@link
+ImmutableMap#of()} instead.
+
+<p><b>Note:</b> if {@code K} is an {@code enum} type, use {@link
+#newEnumMap} instead.
+
+@return a new, empty {@code HashMap}
