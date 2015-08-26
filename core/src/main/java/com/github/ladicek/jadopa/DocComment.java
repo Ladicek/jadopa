@@ -9,7 +9,7 @@ public final class DocComment {
     private final String text;
     private final List<Span> content;
 
-    public DocComment(FirstSentence firstSentence, MainDescription mainDescription, TagSection tagSection,
+    DocComment(FirstSentence firstSentence, MainDescription mainDescription, TagSection tagSection,
                       String text, List<Span> content) {
         this.firstSentence = firstSentence;
         this.mainDescription = mainDescription;
