@@ -34,6 +34,19 @@ public class CountSpansTest {
             .put("simple-singleline-without-period", 0)
             .build();
 
+    private static final ImmutableMap<String, Integer> BLOCK_TAGS_IN_TAG_SECTION = ImmutableMap.<String, Integer>builder()
+            .put("com.google.common.collect.Collections2", 4)
+            .put("com.google.common.collect.Collections2.filter", 0)
+            .put("com.google.common.collect.FluentIterable", 2)
+            .put("com.google.common.collect.Maps.newHashMap", 1)
+            .put("only-tag-section-multiline", 1)
+            .put("only-tag-section-singleline", 1)
+            .put("simple-multiline-with-period", 0)
+            .put("simple-multiline-without-period", 0)
+            .put("simple-singleline-with-period", 0)
+            .put("simple-singleline-without-period", 0)
+            .build();
+
     @Test
     public void mainDescription() {
         for (TestResource resource : TestResource.list()) {
@@ -47,6 +60,14 @@ public class CountSpansTest {
         for (TestResource resource : TestResource.list()) {
             List<Span> spans = DocComment.parse(resource.docComment()).tagSection().content();
             assertEquals(resource.name(), TAG_SECTION.get(resource.name()).intValue(), spans.size());
+        }
+    }
+
+    @Test
+    public void blockTagsInTagSection() {
+        for (TestResource resource : TestResource.list()) {
+            List<BlockTag> blockTags = DocComment.parse(resource.docComment()).tagSection().blockTags();
+            assertEquals(resource.name(), BLOCK_TAGS_IN_TAG_SECTION.get(resource.name()).intValue(), blockTags.size());
         }
     }
 
